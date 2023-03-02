@@ -13,7 +13,11 @@
     <string name="re_type_your_password">Re-type your password</string>
     <string name="register">Register</string>
     <string name="back_to_login">Back to Login</string>
-    <string name="discover_your_new_outfit_here">Discover your New Outfit Here</string>
+    <string name="discover_your">Discover your</string>
+    <string name="New_Outfit_Here">New Outfit Here</string>
+    <string name="Explore_all_the_most_exciting_and">Explore all the most exciting and</string>
+    <string name="latest_outfit_based_on_your_interest">latest outfit based on your interest</string>
     <string name="recovery_password">recovery password</string>
     <string name="or_continue_with">Or continue with</string>
+    <string name="wardrobe">Wardrobe</string>
 </resources>

@@ -1,38 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/bg_color"
     android:gravity="center"
     android:orientation="vertical"
     tools:context=".MainActivity">
 
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:contentDescription="@string/wardrobe"
+        app:srcCompat="@drawable/wardrobe_photo" />
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textStyle="bold"
+        android:layout_marginTop="15dp"
+        android:fontFamily="@font/montserrat_semi_bold"
         android:gravity="center"
-        android:textSize="18sp"
-        android:text="@string/discover_your_new_outfit_here"/>
+        android:text="@string/discover_your"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat_semi_bold"
+        android:gravity="center"
+        android:text="@string/New_Outfit_Here"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="28sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="30dp"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="@string/Explore_all_the_most_exciting_and"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/montserrat"
+        android:gravity="center"
+        android:text="@string/latest_outfit_based_on_your_interest"
+        android:textAlignment="center"
+        android:textAllCaps="false"
+        android:textColor="#000000"
+        android:textSize="17sp"
+        android:textStyle="bold" />
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_gravity="center"
-        android:layout_marginTop="10dp">
+        android:layout_width="match_parent"
+        android:layout_height="107dp"
+        android:layout_gravity="center|center_horizontal|center_vertical"
+        android:layout_marginTop="30dp"
+        android:gravity="center"
+        android:orientation="horizontal">
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/registerNowBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/register"/>
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginEnd="10dp"
+            android:background="@drawable/round_btn"
+            android:elevation="5dp"
+            android:fontFamily="@font/cabin"
+            android:text="@string/register"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textSize="16sp"
+            android:textStyle="normal" />
 
         <androidx.appcompat.widget.AppCompatButton
             android:id="@+id/loginNowBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/sign_in"/>
+            android:layout_width="140dp"
+            android:layout_height="50dp"
+            android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/round_colored_btn"
+            android:fontFamily="@font/cabin"
+            android:text="@string/sign_in"
+            android:textAlignment="center"
+            android:textAllCaps="false"
+            android:textColor="#FFFFFF"
+            android:textSize="16sp"
+            android:textStyle="normal" />
 
     </LinearLayout>
 
