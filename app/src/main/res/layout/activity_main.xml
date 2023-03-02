@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/wardrobe"
-        app:srcCompat="@drawable/wardrobe_photo" />
+        app:srcCompat="@drawable/wardrobe" />
 
     <TextView
         android:layout_width="match_parent"
