@@ -20,4 +20,6 @@
     <string name="recovery_password">recovery password</string>
     <string name="or_continue_with">Or continue with</string>
     <string name="wardrobe">Wardrobe</string>
+    <string name="wardrobe2">Wardrobe</string>
+    <string name="line">Horizontal Line</string>
 </resources>
