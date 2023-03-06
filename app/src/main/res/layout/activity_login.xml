@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/round_panel"
+    android:background="@drawable/ic_panel"
     android:gravity="center|top"
     android:orientation="vertical"
     tools:context=".Login">
@@ -14,7 +14,7 @@
         android:layout_width="425dp"
         android:layout_height="265dp"
         android:contentDescription="@string/wardrobe2"
-        app:srcCompat="@drawable/header"
+        app:srcCompat="@drawable/img_header"
         tools:ignore="VisualLintBounds" />
 
     <LinearLayout
@@ -22,7 +22,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="top"
         android:layout_marginTop="-100dp"
-        android:background="@drawable/round_panel"
+        android:background="@drawable/ic_panel"
         android:gravity="center"
         android:orientation="vertical">
 
@@ -57,7 +57,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
-            android:background="@drawable/round_rectangle"
+            android:background="@drawable/btn_white"
             android:fontFamily="@font/cabin"
             android:hint="@string/username"
             android:inputType="text"
@@ -78,7 +78,7 @@
             android:layout_marginTop="25dp"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
-            android:background="@drawable/round_rectangle"
+            android:background="@drawable/btn_white"
             android:fontFamily="@font/cabin"
             android:hint="@string/password"
             android:inputType="textPassword"
@@ -113,7 +113,7 @@
             android:layout_marginStart="20dp"
             android:layout_marginTop="25dp"
             android:layout_marginEnd="20dp"
-            android:background="@drawable/colored_round_rectangle"
+            android:background="@drawable/btn_colored"
             android:fontFamily="@font/cabin"
             android:gravity="center"
             android:text="@string/sign_in"
@@ -153,7 +153,7 @@
                 android:layout_weight="1"
                 android:alpha="0.5"
                 android:contentDescription="@string/line"
-                app:srcCompat="@drawable/line"
+                app:srcCompat="@drawable/ic_line"
                 tools:ignore="ImageContrastCheck" />
 
             <TextView
@@ -178,7 +178,7 @@
                 android:layout_weight="1"
                 android:alpha="0.5"
                 android:contentDescription="@string/line"
-                app:srcCompat="@drawable/line"
+                app:srcCompat="@drawable/ic_line"
                 tools:ignore="ImageContrastCheck" />
 
         </LinearLayout>
@@ -195,7 +195,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="25dp"
-                android:background="@drawable/circle"
+                android:background="@drawable/ic_circle"
                 android:contentDescription="@string/google_btn"
                 android:elevation="10dp"
                 android:padding="10dp"
@@ -205,14 +205,14 @@
                 app:layout_constraintHorizontal_chainStyle="packed"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="@+id/facebookBtn"
-                app:srcCompat="@drawable/google" />
+                app:srcCompat="@drawable/ic_google" />
 
             <ImageView
                 android:id="@+id/facebookBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="25dp"
-                android:background="@drawable/circle"
+                android:background="@drawable/ic_circle"
                 android:contentDescription="@string/facebook_btn"
                 android:elevation="10dp"
                 android:padding="10dp"
@@ -221,13 +221,13 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/googleBtn"
                 app:layout_constraintTop_toBottomOf="@+id/textView2"
-                app:srcCompat="@drawable/facebook" />
+                app:srcCompat="@drawable/ic_facebook" />
 
             <ImageView
                 android:id="@+id/instagramBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/circle"
+                android:background="@drawable/ic_circle"
                 android:contentDescription="@string/instagram_btn"
                 android:elevation="10dp"
                 android:padding="10dp"
@@ -236,7 +236,7 @@
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/facebookBtn"
                 app:layout_constraintTop_toTopOf="@+id/facebookBtn"
-                app:srcCompat="@drawable/instagram"
+                app:srcCompat="@drawable/ic_instagram"
                 tools:ignore="ImageContrastCheck" />
 
         </LinearLayout>

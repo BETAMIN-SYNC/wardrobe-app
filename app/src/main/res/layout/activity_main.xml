@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:contentDescription="@string/wardrobe"
-        app:srcCompat="@drawable/wardrobe" />
+        app:srcCompat="@drawable/img_wardrobe" />
 
     <TextView
         android:layout_width="match_parent"
@@ -83,7 +83,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginEnd="10dp"
-            android:background="@drawable/border_btn"
+            android:background="@drawable/btn_border"
             android:elevation="10dp"
             android:fontFamily="@font/cabin"
             android:text="@string/register"
@@ -98,7 +98,7 @@
             android:layout_height="50dp"
             android:layout_gravity="center"
             android:layout_marginStart="10dp"
-            android:background="@drawable/round_colored_btn"
+            android:background="@drawable/btn_colored"
             android:fontFamily="@font/cabin"
             android:text="@string/sign_in"
             android:textAlignment="center"
