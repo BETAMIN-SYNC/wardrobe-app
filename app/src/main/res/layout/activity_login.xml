@@ -14,7 +14,8 @@
         android:layout_width="425dp"
         android:layout_height="265dp"
         android:contentDescription="@string/wardrobe2"
-        app:srcCompat="@drawable/header" />
+        app:srcCompat="@drawable/header"
+        tools:ignore="VisualLintBounds" />
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -183,8 +184,10 @@
         </LinearLayout>
 
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="300dp"
+            android:layout_height="100dp"
+            android:layout_marginTop="-30dp"
+            android:gravity="center"
             android:orientation="horizontal">
 
             <ImageView
@@ -192,7 +195,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="25dp"
+                android:background="@drawable/circle"
                 android:contentDescription="@string/google_btn"
+                android:elevation="10dp"
+                android:padding="10dp"
                 app:layout_constraintBottom_toBottomOf="@+id/facebookBtn"
                 app:layout_constraintEnd_toStartOf="@+id/facebookBtn"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -206,7 +212,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="25dp"
+                android:background="@drawable/circle"
                 android:contentDescription="@string/facebook_btn"
+                android:elevation="10dp"
+                android:padding="10dp"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toStartOf="@+id/instagramBtn"
                 app:layout_constraintHorizontal_bias="0.5"
@@ -218,13 +227,17 @@
                 android:id="@+id/instagramBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:background="@drawable/circle"
                 android:contentDescription="@string/instagram_btn"
+                android:elevation="10dp"
+                android:padding="10dp"
                 app:layout_constraintBottom_toBottomOf="@+id/facebookBtn"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintHorizontal_bias="0.5"
                 app:layout_constraintStart_toEndOf="@+id/facebookBtn"
                 app:layout_constraintTop_toTopOf="@+id/facebookBtn"
-                app:srcCompat="@drawable/instagram" />
+                app:srcCompat="@drawable/instagram"
+                tools:ignore="ImageContrastCheck" />
 
         </LinearLayout>
 
