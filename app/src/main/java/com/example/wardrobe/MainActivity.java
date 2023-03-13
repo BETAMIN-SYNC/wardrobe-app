@@ -1,25 +1,53 @@
 package com.example.wardrobe;
 
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
-import android.widget.Button;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
+
+import com.example.wardrobe.databinding.ActivityHomeBinding;
+
 
 public class MainActivity extends AppCompatActivity {
 
+    ActivityHomeBinding binding;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        binding = ActivityHomeBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        replaceFragment(new homeFragment());
 
-        final Button registerNowBtn = findViewById(R.id.registerNowBtn);
-        final Button loginNowBtn = findViewById(R.id.loginNowBtn);
+        binding.nav.setOnItemSelectedListener(item -> {
 
-        //opens register tab
-        registerNowBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Register.class)) );
-        //opens login tab
-        loginNowBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, Login.class)) );
+            switch (item.getItemId()){
+                case R.id.home:
+                    replaceFragment(new homeFragment());
+                    break;
+                case R.id.search:
+                    replaceFragment(new searchFragment());
+                    break;
+                case R.id.wardrobe:
+                    replaceFragment(new wardrobeFragment());
+                    break;
+                case R.id.inbox:
+                    replaceFragment(new inboxFragment());
+                    break;
+            }
+
+            return true;
+        });
+
+    }
+
+    private void replaceFragment(Fragment fragment) {
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.replace(R.id.fragment_container,fragment);
+        fragmentTransaction.commit();
     }
 }

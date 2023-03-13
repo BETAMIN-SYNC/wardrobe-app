@@ -28,4 +28,6 @@
     <string name="google_btn">Google</string>
     <string name="facebook_btn">Facebook</string>
     <string name="instagram_btn">Instagram</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

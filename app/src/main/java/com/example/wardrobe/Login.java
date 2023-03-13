@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
 
@@ -56,7 +55,8 @@ public class Login extends AppCompatActivity {
                                 Toast.makeText(Login.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
 
                                 //opens the main tab upon success
-                                startActivity(new Intent(Login.this, MainActivity.class));
+                                Intent in = new Intent(Login.this, MainActivity.class);
+                                startActivity(in);
                                 finish();
                             }
                             else {
