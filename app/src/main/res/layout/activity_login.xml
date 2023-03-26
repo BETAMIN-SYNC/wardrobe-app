@@ -50,24 +50,22 @@
             tools:ignore="TextSizeCheck" />
 
         <EditText
-            android:id="@+id/userName"
+            android:id="@+id/email"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="25dp"
             android:layout_marginEnd="20dp"
             android:autofillHints=""
             android:background="@drawable/btn_white"
             android:fontFamily="@font/cabin"
-            android:hint="@string/username"
-            android:inputType="text"
+            android:hint="@string/enter_your_email"
+            android:inputType="textEmailAddress"
             android:maxLines="1"
             android:minHeight="48dp"
             android:paddingStart="20dp"
             android:paddingEnd="0dp"
             android:textSize="14sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/textView3"
             tools:ignore="VisualLintTextFieldSize" />
 
         <EditText
@@ -89,8 +87,8 @@
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
-            app:layout_constraintStart_toStartOf="@+id/userName"
-            app:layout_constraintTop_toBottomOf="@+id/userName"
+            app:layout_constraintStart_toStartOf="@+id/username"
+            app:layout_constraintTop_toBottomOf="@+id/username"
             tools:ignore="VisualLintTextFieldSize" />
 
         <TextView
@@ -107,7 +105,7 @@
             app:layout_constraintTop_toBottomOf="@+id/password" />
 
         <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/loginBtn"
+            android:id="@+id/loginNowBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="20dp"
@@ -128,7 +126,7 @@
             tools:ignore="VisualLintButtonSize" />
 
         <TextView
-            android:id="@+id/recoveryPassword2"
+            android:id="@+id/registerBtn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

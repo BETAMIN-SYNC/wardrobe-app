@@ -1,15 +1,18 @@
 package com.example.wardrobe;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.TextUtils;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -18,61 +21,63 @@ import com.google.firebase.database.ValueEventListener;
 
 public class Login extends AppCompatActivity {
 
-    //accesses firebase's Realtime Database for the accounts
-    DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReferenceFromUrl("https://wardrobe-6b1b9-default-rtdb.firebaseio.com/");
+    EditText email, password;
+    Button loginNowBtn;
+    TextView registerBtn;
+
+    FirebaseAuth auth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
-        final EditText userName = findViewById(R.id.userName);
-        final EditText password = findViewById(R.id.password);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
+        loginNowBtn = findViewById(R.id.loginNowBtn);
+        registerBtn = findViewById(R.id.registerBtn);
 
-        Button loginBtn = findViewById(R.id.loginBtn);
-        ImageView googleBtn = findViewById(R.id.googleBtn);
+        auth = FirebaseAuth.getInstance();
 
-        loginBtn.setOnClickListener(v -> {
-            final String userNameTxt = userName.getText().toString();
-            final String passwordTxt = password.getText().toString();
+        registerBtn.setOnClickListener(v -> startActivity(new Intent(Login.this, Register.class)));
 
-            if (userNameTxt.isEmpty() || passwordTxt.isEmpty()){
-                Toast.makeText(Login.this, "Enter your username and password to continue", Toast.LENGTH_SHORT).show();
-            }
-            else{
+        loginNowBtn.setOnClickListener(v -> {
+            ProgressDialog pd = new ProgressDialog(Login.this);
+            pd.setMessage("Please wait..");
+            pd.show();
 
-                databaseReference.child("users").addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+            String str_email = email.getText().toString();
+            String str_password = password.getText().toString();
 
-                        //checks if the username exists in the database
-                        if (snapshot.hasChild(userNameTxt)){
+            if (TextUtils.isEmpty(str_email) || TextUtils.isEmpty(str_password)) {
+                Toast.makeText(Login.this, "All fields are required!", Toast.LENGTH_SHORT).show();
+            } else {
+                auth.signInWithEmailAndPassword(str_email, str_password)
+                        .addOnCompleteListener(Login.this, task -> {
+                            if (task.isSuccessful()) {
+                                DatabaseReference reference = FirebaseDatabase.getInstance().getReference().child("Users")
+                                        .child(auth.getCurrentUser().getUid());
 
-                            final String getPassword = snapshot.child(userNameTxt).child("password").getValue(String.class);
+                                reference.addValueEventListener(new ValueEventListener() {
+                                    @Override
+                                    public void onDataChange(@NonNull DataSnapshot snapshot) {
+                                        pd.dismiss();
+                                        Intent intent = new Intent(Login.this, MainActivity.class);
+                                        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                                        startActivity(intent);
+                                        finish();
+                                    }
 
-                            assert getPassword != null;
-                            if (getPassword.equals(passwordTxt)){
-                                Toast.makeText(Login.this, "Successfully logged in", Toast.LENGTH_SHORT).show();
-
-                                //opens the main tab upon success
-                                Intent in = new Intent(Login.this, MainActivity.class);
-                                startActivity(in);
-                                finish();
+                                    @Override
+                                    public void onCancelled(@NonNull DatabaseError error) {
+                                        pd.dismiss();
+                                    }
+                                });
+                            } else {
+                                pd.dismiss();
+                                Toast.makeText(Login.this, "Authentication failed!", Toast.LENGTH_SHORT).show();
                             }
-                            else {
-                                Toast.makeText(Login.this, "Incorrect Password", Toast.LENGTH_SHORT).show();
-                            }
-                        }
-                        else{
-                            Toast.makeText(Login.this, "Incorrect Username", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onCancelled(@NonNull DatabaseError error) {
-
-                    }
-                });
+                        });
             }
         });
     }
