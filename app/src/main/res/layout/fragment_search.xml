@@ -11,19 +11,15 @@
         android:id="@+id/bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="?android:attr/windowBackground" />
+        android:background="?android:attr/windowBackground" >
+
+    </com.google.android.material.appbar.AppBarLayout>
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="35dp"
         android:background="@color/bg_color" />
-
-    <ImageView
-        android:layout_width="45dp"
-        android:layout_height="35dp"
-        android:contentDescription="@string/search_btn"
-        android:src="@drawable/search" />
 
     <EditText
         android:id="@+id/search_bar"
@@ -36,7 +32,14 @@
         android:hint="@string/search"
         android:inputType="text"
         android:minHeight="32dp"
+        android:textSize="15sp"
         tools:ignore="VisualLintTextFieldSize" />
+
+    <ImageView
+        android:layout_width="45dp"
+        android:layout_height="35dp"
+        android:contentDescription="@string/search_btn"
+        android:src="@drawable/search" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_view"

@@ -14,20 +14,6 @@ public class StartActivity extends AppCompatActivity {
     Button loginNowBtn, registerNowBtn;
 
     FirebaseUser firebaseUser;
-
-    //@Override
-    //protected void onStart() {
-       //super.onStart();
-
-        //firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
-        // redirect if user is not null
-        //if (firebaseUser != null) {
-            //startActivity(new Intent(StartActivity.this, MainActivity.class));
-            //finish();
-        //}
-    //}
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
