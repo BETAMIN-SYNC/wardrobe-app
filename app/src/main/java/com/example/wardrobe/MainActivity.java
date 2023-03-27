@@ -7,6 +7,10 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.wardrobe.Fragment.homeFragment;
+import com.example.wardrobe.Fragment.inboxFragment;
+import com.example.wardrobe.Fragment.searchFragment;
+import com.example.wardrobe.Fragment.wardrobeFragment;
 import com.example.wardrobe.databinding.ActivityHomeBinding;
 
 

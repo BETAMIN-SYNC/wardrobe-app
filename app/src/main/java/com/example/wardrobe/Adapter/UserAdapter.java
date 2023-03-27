@@ -15,7 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.wardrobe.Model.User;
 import com.example.wardrobe.R;
-import com.example.wardrobe.profileFragment;
+import com.example.wardrobe.Fragment.profileFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;

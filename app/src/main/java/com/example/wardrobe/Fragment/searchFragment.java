@@ -1,4 +1,4 @@
-package com.example.wardrobe;
+package com.example.wardrobe.Fragment;
 
 import android.os.Bundle;
 
@@ -16,6 +16,7 @@ import android.widget.EditText;
 
 import com.example.wardrobe.Adapter.UserAdapter;
 import com.example.wardrobe.Model.User;
+import com.example.wardrobe.R;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -26,7 +27,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class profileFragment extends Fragment {
+public class searchFragment extends Fragment {
 
     private UserAdapter userAdapter;
     private List<User> mUsers;
@@ -48,7 +49,7 @@ public class profileFragment extends Fragment {
         userAdapter = new UserAdapter(getContext(), mUsers);
         recyclerView.setAdapter(userAdapter);
 
-        readUser();
+        readUsers();
         search_bar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -57,7 +58,7 @@ public class profileFragment extends Fragment {
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                searchUser(s.toString().toLowerCase());
+                searchUsers(s.toString().toLowerCase());
             }
 
             @Override
@@ -69,7 +70,7 @@ public class profileFragment extends Fragment {
         return view;
     }
 
-    private void searchUser(String s) {
+    private void searchUsers(String s) {
         Query query = FirebaseDatabase.getInstance().getReference("Users").orderByChild("username")
                 .startAt(s)
                 .endAt(s+"\uf8ff");
@@ -78,8 +79,8 @@ public class profileFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 mUsers.clear();
-                for (DataSnapshot snapshot1 : snapshot.getChildren()){
-                    User user = snapshot1.getValue((User.class));
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    User user = dataSnapshot.getValue(User.class);
                     mUsers.add(user);
                 }
                 userAdapter.notifyDataSetChanged();
@@ -92,17 +93,18 @@ public class profileFragment extends Fragment {
         });
     }
 
-    private void readUser() {
+    private void readUsers() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (search_bar.getText().toString().equals("")) {
                     mUsers.clear();
-                    for (DataSnapshot snapshot1 : snapshot.getChildren()){
-                        User user = snapshot1.getValue(User.class);
+                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                        User user = dataSnapshot.getValue(User.class);
                         mUsers.add(user);
                     }
+
                     userAdapter.notifyDataSetChanged();
                 }
             }
