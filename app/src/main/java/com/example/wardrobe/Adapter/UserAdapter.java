@@ -13,9 +13,9 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
+import com.example.wardrobe.Fragment.profileFragment;
 import com.example.wardrobe.Model.User;
 import com.example.wardrobe.R;
-import com.example.wardrobe.Fragment.profileFragment;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -44,7 +44,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view = LayoutInflater.from(mContext).inflate(R.layout.user_item, viewGroup, false);
-        return new ViewHolder(view);
+        return new UserAdapter.ViewHolder(view);
     }
 
     @Override
@@ -92,6 +92,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
     public int getItemCount() {
         return mUsers.size();
     }
+
 
     public static class ViewHolder extends RecyclerView.ViewHolder {
 

@@ -29,10 +29,19 @@
     <string name="google_btn">Google</string>
     <string name="facebook_btn">Facebook</string>
     <string name="instagram_btn">Instagram</string>
+    <string name="posts">posts</string>
     <string name="follow">follow</string>
     <string name="following">following</string>
+    <string name="followers">followers</string>
     <string name="search">Search</string>
     <string name="search_btn">Search icon</string>
+    <string name="settings_icon">Setting</string>
+    <string name="dashboard_icon">Dashboard</string>
+    <string name="bookmark_icon">Bookmark</string>
+    <string name="options_icon">Option</string>
+    <string name="notification_icon">Notification</string>
+    <string name="profile_icon">Profile</string>
+
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

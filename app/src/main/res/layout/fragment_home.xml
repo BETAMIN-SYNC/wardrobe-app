@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".Fragment.homeFragment">
@@ -16,11 +16,45 @@
             android:layout_width="match_parent"
             android:layout_height="?attr/actionBarSize"
             android:background="@color/white"
-            android:minHeight="?attr/actionBarSize"
-            android:theme="?attr/actionBarTheme"
-            app:menu="@menu/home_bar"
-            app:navigationIcon="@drawable/user" />
+            android:minHeight="?attr/actionBarSize">
 
+            <ImageButton
+                android:id="@+id/profileBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="start"
+                android:background="@color/white"
+                android:baselineAlignBottom="false"
+                android:contentDescription="@string/profile_icon"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:src="@drawable/user" />
+
+            <ImageButton
+                android:id="@+id/optionsBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@color/white"
+                android:baselineAlignBottom="false"
+                android:contentDescription="@string/options_icon"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:src="@drawable/option" />
+
+            <ImageButton
+                android:id="@+id/notifBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:background="@color/white"
+                android:baselineAlignBottom="false"
+                android:contentDescription="@string/notification_icon"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:src="@drawable/notification" />
+
+        </androidx.appcompat.widget.Toolbar>
 
     </com.google.android.material.appbar.AppBarLayout>
 

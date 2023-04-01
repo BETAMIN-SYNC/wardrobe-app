@@ -23,7 +23,6 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.Query;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -71,6 +70,7 @@ public class searchFragment extends Fragment {
     }
 
     private void searchUsers(String s) {
+
         Query query = FirebaseDatabase.getInstance().getReference("Users").orderByChild("username")
                 .startAt(s)
                 .endAt(s+"\uf8ff");
@@ -94,6 +94,7 @@ public class searchFragment extends Fragment {
     }
 
     private void readUsers() {
+
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
         reference.addValueEventListener(new ValueEventListener() {
             @Override

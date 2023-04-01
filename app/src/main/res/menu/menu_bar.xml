@@ -12,6 +12,11 @@
         android:title="Search" />
 
     <item
+        android:id="@+id/post"
+        android:icon="@drawable/add"
+        android:title="Post" />
+
+    <item
         android:id="@+id/wardrobe"
         android:icon="@drawable/wardrobe"
         android:title="Wardrobe" />

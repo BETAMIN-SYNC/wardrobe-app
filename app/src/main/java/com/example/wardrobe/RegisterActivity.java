@@ -18,7 +18,7 @@ import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.HashMap;
 
-public class Register extends AppCompatActivity {
+public class RegisterActivity extends AppCompatActivity {
 
     EditText fullname, email, username, password;
     Button registerBtn;
@@ -43,10 +43,10 @@ public class Register extends AppCompatActivity {
 
         auth = FirebaseAuth.getInstance();
 
-        loginNowBtn.setOnClickListener(v -> startActivity(new Intent(Register.this, Login.class)));
+        loginNowBtn.setOnClickListener(v -> startActivity(new Intent(RegisterActivity.this, LoginActivity.class)));
 
         registerBtn.setOnClickListener(v -> {
-            pd = new ProgressDialog(Register.this);
+            pd = new ProgressDialog(RegisterActivity.this);
             pd.setMessage("Please wait..");
             pd.show();
 
@@ -57,9 +57,9 @@ public class Register extends AppCompatActivity {
 
             if (TextUtils.isEmpty(str_fullname) || TextUtils.isEmpty(str_email) || TextUtils.isEmpty(str_username)
                     || TextUtils.isEmpty(str_password)) {
-                Toast.makeText(Register.this, "All fields are required!", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, "All fields are required!", Toast.LENGTH_SHORT).show();
             } else if (str_password.length() < 6) {
-                Toast.makeText(Register.this, "Password must have 6 characters", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, "Password must have 6 characters", Toast.LENGTH_SHORT).show();
             } else {
                 registerBtn(str_fullname, str_email, str_username, str_password);
             }
@@ -68,7 +68,7 @@ public class Register extends AppCompatActivity {
 
     private void registerBtn(String fullname, String email, String username, String password) {
         auth.createUserWithEmailAndPassword(email, password)
-                .addOnCompleteListener(Register.this, task -> {
+                .addOnCompleteListener(RegisterActivity.this, task -> {
                     if (task.isSuccessful()) {
                         FirebaseUser firebaseUser = auth.getCurrentUser();
                         String userid = firebaseUser.getUid();
@@ -85,14 +85,14 @@ public class Register extends AppCompatActivity {
                         reference.setValue(hashMap).addOnCompleteListener(task1 -> {
                             if(task1.isSuccessful()) {
                                 pd.dismiss();
-                                Intent intent = new Intent(Register.this, MainActivity.class);
+                                Intent intent = new Intent(RegisterActivity.this, MainActivity.class);
                                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
                                 startActivity(intent);
                             }
                         });
                     } else {
                         pd.dismiss();
-                        Toast.makeText(Register.this,"You can't register with this email or password", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(RegisterActivity.this,"You can't register with this email or password", Toast.LENGTH_SHORT).show();
                     }
                 });
     }

@@ -1,5 +1,6 @@
 package com.example.wardrobe;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,6 +18,7 @@ import com.example.wardrobe.databinding.ActivityHomeBinding;
 public class MainActivity extends AppCompatActivity {
 
     ActivityHomeBinding binding;
+    Fragment selectedFragment = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +36,10 @@ public class MainActivity extends AppCompatActivity {
                     break;
                 case R.id.search:
                     replaceFragment(new searchFragment());
+                    break;
+                case R.id.post:
+                    selectedFragment = null;
+                    startActivity(new Intent(MainActivity.this, PostActivity.class));
                     break;
                 case R.id.wardrobe:
                     replaceFragment(new wardrobeFragment());

@@ -7,7 +7,7 @@
     android:background="@drawable/ic_panel"
     android:gravity="center|top"
     android:orientation="vertical"
-    tools:context=".Login">
+    tools:context=".LoginActivity">
 
     <ImageView
         android:id="@+id/imageView5"

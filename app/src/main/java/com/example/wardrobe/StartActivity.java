@@ -19,8 +19,8 @@ public class StartActivity extends AppCompatActivity {
         loginNowBtn = findViewById(R.id.loginNowBtn);
 
         // opens register tab
-        registerNowBtn.setOnClickListener(v -> startActivity(new Intent(StartActivity.this, Register.class)));
+        registerNowBtn.setOnClickListener(v -> startActivity(new Intent(StartActivity.this, RegisterActivity.class)));
         // opens login tab
-        loginNowBtn.setOnClickListener(v -> startActivity(new Intent(StartActivity.this, Login.class)));
+        loginNowBtn.setOnClickListener(v -> startActivity(new Intent(StartActivity.this, LoginActivity.class)));
     }
 }

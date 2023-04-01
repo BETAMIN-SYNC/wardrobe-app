@@ -14,6 +14,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Wardrobe"
         tools:targetApi="31" >
+
+        <activity
+            android:name=".PostActivity"
+            android:exported="true" />
         <activity
             android:name=".MainActivity"
             android:exported="true" />
@@ -21,10 +25,10 @@
             android:name=".googleSignIn"
             android:exported="false" />
         <activity
-            android:name=".Register"
+            android:name=".RegisterActivity"
             android:exported="false" />
         <activity
-            android:name=".Login"
+            android:name=".LoginActivity"
             android:exported="true" />
         <activity
             android:name=".StartActivity"

@@ -1,112 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bg_color"
-    android:gravity="center"
-    android:orientation="vertical"
-    tools:context=".StartActivity">
+    android:layout_height="wrap_content"
+    android:background="@color/bg_color">
 
-    <ImageView
-        android:id="@+id/imageView"
+    <FrameLayout
+        android:id="@+id/fragment_container"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:contentDescription="@string/wardrobe"
-        app:srcCompat="@drawable/img_wardrobe" />
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="0dp"
+        android:background="@color/bg_color"
+        app:itemIconTint="@drawable/ic_color"
+        app:itemTextColor="@color/black"
+        app:labelVisibilityMode="unlabeled"
+        app:menu="@menu/menu_bar">
 
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="15dp"
-        android:fontFamily="@font/montserrat_semi_bold"
-        android:gravity="center"
-        android:text="@string/discover_your"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="@color/black"
-        android:textSize="28sp"
-        android:textStyle="bold" />
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat_semi_bold"
-        android:gravity="center"
-        android:text="@string/New_Outfit_Here"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#000000"
-        android:textSize="28sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:fontFamily="@font/montserrat"
-        android:gravity="center"
-        android:text="@string/Explore_all_the_most_exciting_and"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#000000"
-        android:textSize="17sp"
-        android:textStyle="bold" />
-
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/montserrat"
-        android:gravity="center"
-        android:text="@string/latest_outfit_based_on_your_interest"
-        android:textAlignment="center"
-        android:textAllCaps="false"
-        android:textColor="#000000"
-        android:textSize="17sp"
-        android:textStyle="bold" />
-
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="107dp"
-        android:layout_gravity="center|center_horizontal|center_vertical"
-        android:layout_marginTop="30dp"
-        android:gravity="center"
-        android:orientation="horizontal">
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/registerBtn"
-            android:layout_width="140dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginEnd="10dp"
-            android:background="@drawable/btn_border"
-            android:elevation="10dp"
-            android:fontFamily="@font/cabin"
-            android:text="@string/register"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textSize="16sp"
-            android:textStyle="normal" />
-
-        <androidx.appcompat.widget.AppCompatButton
-            android:id="@+id/loginNowBtn"
-            android:layout_width="140dp"
-            android:layout_height="50dp"
-            android:layout_gravity="center"
-            android:layout_marginStart="10dp"
-            android:background="@drawable/btn_colored"
-            android:fontFamily="@font/cabin"
-            android:text="@string/sign_in"
-            android:textAlignment="center"
-            android:textAllCaps="false"
-            android:textColor="#FFFFFF"
-            android:textSize="16sp"
-            android:textStyle="normal" />
-
-    </LinearLayout>
-
-</LinearLayout>
+</RelativeLayout>
