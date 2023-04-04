@@ -47,8 +47,14 @@ public class LoginActivity extends AppCompatActivity {
             String str_email = email.getText().toString();
             String str_password = password.getText().toString();
 
-            if (TextUtils.isEmpty(str_email) || TextUtils.isEmpty(str_password)) {
+            if (TextUtils.isEmpty(str_email) && TextUtils.isEmpty(str_password)) {
                 Toast.makeText(LoginActivity.this, "All fields are required!", Toast.LENGTH_SHORT).show();
+            } else if (TextUtils.isEmpty(str_email)) {
+                Toast.makeText(LoginActivity.this, "Email is required.", Toast.LENGTH_SHORT).show();
+            } else if (TextUtils.isEmpty(str_password)) {
+                Toast.makeText(LoginActivity.this, "Password is required.", Toast.LENGTH_SHORT).show();
+            } else if (str_password.length() < 6) {
+                Toast.makeText(LoginActivity.this, "Password must have 6 characters.", Toast.LENGTH_SHORT).show();
             } else {
                 auth.signInWithEmailAndPassword(str_email, str_password)
                         .addOnCompleteListener(LoginActivity.this, task -> {

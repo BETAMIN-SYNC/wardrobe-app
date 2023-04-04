@@ -14,17 +14,18 @@
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="5dp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="10dp"
         android:layout_toEndOf="@id/image_profile"
-        android:orientation="vertical"
-        android:layout_centerVertical="true">
+        android:orientation="vertical">
 
         <TextView
             android:id="@+id/username"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/cabin"
             android:maxLines="1"
-            android:text="Username"
+            android:text="@string/username"
             android:textColor="@color/black"
             android:textStyle="bold" />
 
@@ -32,20 +33,25 @@
             android:id="@+id/fullname"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/cabin"
             android:maxLines="1"
-            android:text="Full Name" />
+            android:text="@string/fullname" />
 
     </LinearLayout>
 
-    <Button
+    <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/btn_follow"
         android:layout_width="wrap_content"
         android:layout_height="30dp"
-        android:background="@drawable/btn_colored"
-        android:text="Follow"
-        android:textColor="@color/white"
         android:layout_alignParentEnd="true"
         android:layout_centerVertical="true"
-        android:visibility="gone"/>
+        android:background="@drawable/btn_light"
+        android:clickable="true"
+        android:fontFamily="@font/cabin"
+        android:text="@string/follow"
+        android:textColor="@color/black"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        android:visibility="gone" />
 
 </RelativeLayout>

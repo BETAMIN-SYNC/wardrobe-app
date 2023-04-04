@@ -3,10 +3,8 @@ package com.example.wardrobe.Fragment;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
-
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,7 +12,6 @@ import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import com.bumptech.glide.Glide;
 import com.example.wardrobe.Model.User;
 import com.example.wardrobe.R;
@@ -25,6 +22,8 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.util.Objects;
 
 public class profileFragment extends Fragment {
 
@@ -45,7 +44,7 @@ public class profileFragment extends Fragment {
 
         firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
 
-        SharedPreferences prefs = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
+        SharedPreferences prefs = requireContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE);
 
         if (getContext() != null) {
             profileid = prefs.getString("profileid", "none");
@@ -112,7 +111,7 @@ public class profileFragment extends Fragment {
 
                 User user = snapshot.getValue(User.class);
 
-                Glide.with(getContext()).load(user.getImageurl()).into(image_profile);
+                Glide.with(getContext()).load(Objects.requireNonNull(user).getImageurl()).into(image_profile);
                 username.setText(user.getUsername());
                 fullname.setText(user.getFullname());
                 bio.setText(user.getBio());
@@ -202,12 +201,10 @@ public class profileFragment extends Fragment {
             //}
         //});
     //}
-
-
     @Override
     public void onStop() {
         super.onStop();
-        SharedPreferences.Editor editor = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor = requireContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
         editor.putString("profileid", firebaseUser.getUid());
         editor.apply();
     }
@@ -215,7 +212,7 @@ public class profileFragment extends Fragment {
     @Override
     public void onPause() {
         super.onPause();
-        SharedPreferences.Editor editor = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor = requireContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
         editor.putString("profileid", firebaseUser.getUid());
         editor.apply();
     }
@@ -223,7 +220,7 @@ public class profileFragment extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-        SharedPreferences.Editor editor = getContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+        SharedPreferences.Editor editor = requireContext().getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
         editor.putString("profileid", firebaseUser.getUid());
         editor.apply();
     }

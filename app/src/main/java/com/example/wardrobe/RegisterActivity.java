@@ -59,7 +59,7 @@ public class RegisterActivity extends AppCompatActivity {
                     || TextUtils.isEmpty(str_password)) {
                 Toast.makeText(RegisterActivity.this, "All fields are required!", Toast.LENGTH_SHORT).show();
             } else if (str_password.length() < 6) {
-                Toast.makeText(RegisterActivity.this, "Password must have 6 characters", Toast.LENGTH_SHORT).show();
+                Toast.makeText(RegisterActivity.this, "Password must have 6 characters.", Toast.LENGTH_SHORT).show();
             } else {
                 registerBtn(str_fullname, str_email, str_username, str_password);
             }

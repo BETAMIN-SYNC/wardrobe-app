@@ -6,7 +6,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-
 import com.example.wardrobe.R;
 
 
@@ -20,14 +19,16 @@ public class homeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        profileBtn = view.findViewById(R.id.profileBtn);
+        profileBtn = view.findViewById(R.id.image_profile);
 
         // directs in profile section
         profileBtn.setOnClickListener(v -> {
             profileFragment profileFragment = new profileFragment();
-            getActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, profileFragment).commit();
+            requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, profileFragment).commit();
         });
 
         return view;
     }
+
+
 }
