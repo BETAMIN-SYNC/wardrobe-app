@@ -8,7 +8,6 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -54,12 +53,7 @@ public class CommentsActivity extends AppCompatActivity {
         setSupportActionBar(toolbar);
         getSupportActionBar().setTitle("Comments");
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                finish();
-            }
-        });
+        toolbar.setNavigationOnClickListener(view -> finish());
 
         recyclerView = findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -79,14 +73,11 @@ public class CommentsActivity extends AppCompatActivity {
         postid = intent.getStringExtra("postid");
         publisherid = intent.getStringExtra("publisherid");
 
-        post.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (addcomment.getText().toString().equals("")){
-                    Toast.makeText(CommentsActivity.this, "You can't send an empty comment.", Toast.LENGTH_SHORT).show();
-                } else {
-                    addComment();
-                }
+        post.setOnClickListener(view -> {
+            if (addcomment.getText().toString().equals("")){
+                Toast.makeText(CommentsActivity.this, "You can't send an empty comment.", Toast.LENGTH_SHORT).show();
+            } else {
+                addComment();
             }
         });
 
@@ -113,6 +104,7 @@ public class CommentsActivity extends AppCompatActivity {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
+                assert user != null;
                 Glide.with(getApplicationContext()).load(user.getImageurl()).into(image_profile);
             }
 
@@ -131,7 +123,7 @@ public class CommentsActivity extends AppCompatActivity {
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 commentList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()){
-                    Comment comment = snapshot.getValue(Comment.class);
+                    Comment comment = dataSnapshot.getValue(Comment.class);
                     commentList.add(comment);
                 }
 

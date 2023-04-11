@@ -35,7 +35,6 @@ import de.hdodenhof.circleimageview.CircleImageView;
 public class homeFragment extends Fragment {
 
     CircleImageView image_profile;
-    // added
     private RecyclerView recyclerView;
     private PostAdapter postAdapter;
     private List<Post> postLists;
@@ -49,7 +48,6 @@ public class homeFragment extends Fragment {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
         image_profile = view.findViewById(R.id.image_profile);
-        // added
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(getContext());
@@ -61,8 +59,8 @@ public class homeFragment extends Fragment {
         recyclerView.setAdapter(postAdapter);
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
-
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(firebaseUser).getUid());
+
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -87,7 +85,6 @@ public class homeFragment extends Fragment {
         return view;
     }
 
-//    added
     private void checkFollowing() {
         followingList = new ArrayList<>();
 
@@ -113,7 +110,6 @@ public class homeFragment extends Fragment {
 
     }
 
-    // added
     private void readPosts() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
 

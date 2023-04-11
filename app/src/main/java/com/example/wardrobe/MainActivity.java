@@ -36,9 +36,11 @@ public class MainActivity extends AppCompatActivity {
             SharedPreferences.Editor editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
             editor.putString("profileid", publisher);
             editor.apply();
-        }
 
-        replaceFragment(new homeFragment());
+            replaceFragment(new profileFragment());
+        } else {
+            replaceFragment(new homeFragment());
+        }
 
 
         binding.nav.setOnItemSelectedListener(item -> {

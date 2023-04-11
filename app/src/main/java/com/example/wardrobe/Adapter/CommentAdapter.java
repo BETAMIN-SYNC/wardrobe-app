@@ -28,8 +28,8 @@ import java.util.List;
 
 public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHolder> {
 
-    private Context mContext;
-    private List<Comment> mComment;
+    private final Context mContext;
+    private final List<Comment> mComment;
 
     private FirebaseUser firebaseUser;
 
@@ -54,24 +54,18 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         viewHolder.comment.setText(comment.getComment());
         getUserInfo(viewHolder.image_profile, viewHolder.username, comment.getPublisher());
 
-        viewHolder.comment.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        viewHolder.comment.setOnClickListener(view -> {
 
-                Intent intent = new Intent(mContext, MainActivity.class);
-                intent.putExtra("publisherid", comment.getPublisher());
-                mContext.startActivity(intent);
-            }
+            Intent intent = new Intent(mContext, MainActivity.class);
+            intent.putExtra("publisherid", comment.getPublisher());
+            mContext.startActivity(intent);
         });
 
-        viewHolder.image_profile.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
+        viewHolder.image_profile.setOnClickListener(view -> {
 
-                Intent intent = new Intent(mContext, MainActivity.class);
-                intent.putExtra("publisherid", comment.getPublisher());
-                mContext.startActivity(intent);
-            }
+            Intent intent = new Intent(mContext, MainActivity.class);
+            intent.putExtra("publisherid", comment.getPublisher());
+            mContext.startActivity(intent);
         });
 
     }
@@ -81,7 +75,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
         return mComment.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    public static class ViewHolder extends RecyclerView.ViewHolder{
 
         public ImageView image_profile;
         public TextView username, comment;
@@ -103,6 +97,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
+                assert user != null;
                 Glide.with(mContext).load(user.getImageurl()).into(imageView);
                 username.setText(user.getUsername());
             }

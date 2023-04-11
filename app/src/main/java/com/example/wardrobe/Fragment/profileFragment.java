@@ -13,6 +13,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
+import com.example.wardrobe.Model.Post;
 import com.example.wardrobe.Model.User;
 import com.example.wardrobe.R;
 import com.google.firebase.auth.FirebaseAuth;
@@ -64,7 +65,7 @@ public class profileFragment extends Fragment {
 
         userInfo();
         getFollowers();
-        //getNrPosts();
+        getNrPosts();
 
         if (profileid.equals(firebaseUser.getUid())) {
             edit_profile.setText("Edit Profile");
@@ -179,28 +180,30 @@ public class profileFragment extends Fragment {
     }
 
     // retrieves the number of posts from the Firebase database and display them on the UI.
-    //private void getPosts() {
-        //DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
-        //reference.addValueEventListener(new ValueEventListener() {
-            //@Override
-            //public void onDataChange(@NonNull DataSnapshot snapshot) {
-                //int i = 0;
-                ///for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    //Post post = snapshot.getValue(Post.class);
-                    //if (post.getPublisher().equals(profileid)) {
-                        //i++;
-                    //}
-                //}
+    private void getNrPosts() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                int i = 0;
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Post post = dataSnapshot.getValue(Post.class);
+                    assert post != null;
+                    if (post.getPublisher().equals(profileid)) {
+                        i++;
+                    }
+                }
 
-                //posts.setText(""+i);
-            //}
+                posts.setText(""+i);
+            }
 
-            //@Override
-            //public void onCancelled(@NonNull DatabaseError error) {
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
 
-            //}
-        //});
-    //}
+            }
+        });
+    }
+
     @Override
     public void onStop() {
         super.onStop();
