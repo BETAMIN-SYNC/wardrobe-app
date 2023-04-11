@@ -71,7 +71,7 @@ public class PostActivity extends AppCompatActivity {
 
         if (imageUri != null) {
             StorageReference filereference = storageReference.child(System.currentTimeMillis()
-            + "."+ getFileExtension(imageUri));
+                    + "."+ getFileExtension(imageUri));
 
             uploadTask = filereference.putFile(imageUri);
             uploadTask.continueWithTask(task -> {
@@ -113,13 +113,13 @@ public class PostActivity extends AppCompatActivity {
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
 
-        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE && resultCode == RESULT_OK) {
+        if (requestCode == CropImage.CROP_IMAGE_ACTIVITY_REQUEST_CODE) {
             CropImage.ActivityResult result = CropImage.getActivityResult(data);
             imageUri = Objects.requireNonNull(result).getUri();
 
             add_image.setImageURI(imageUri);
         } else {
-            Toast.makeText(this, "Something gone wrong!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Something went wrong!", Toast.LENGTH_SHORT).show();
             startActivity(new Intent(PostActivity.this, MainActivity.class));
             finish();
         }
