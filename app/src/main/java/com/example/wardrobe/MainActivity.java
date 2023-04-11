@@ -1,6 +1,7 @@
 package com.example.wardrobe;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -10,6 +11,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.wardrobe.Fragment.homeFragment;
 import com.example.wardrobe.Fragment.inboxFragment;
+import com.example.wardrobe.Fragment.profileFragment;
 import com.example.wardrobe.Fragment.searchFragment;
 import com.example.wardrobe.Fragment.wardrobeFragment;
 import com.example.wardrobe.databinding.ActivityHomeBinding;
@@ -26,7 +28,18 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         binding = ActivityHomeBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
+
+        Bundle intent = getIntent().getExtras();
+        if (intent != null) {
+            String publisher = intent.getString("publisherid");
+
+            SharedPreferences.Editor editor = getSharedPreferences("PREFS", MODE_PRIVATE).edit();
+            editor.putString("profileid", publisher);
+            editor.apply();
+        }
+
         replaceFragment(new homeFragment());
+
 
         binding.nav.setOnItemSelectedListener(item -> {
 
@@ -57,7 +70,9 @@ public class MainActivity extends AppCompatActivity {
     private void replaceFragment(Fragment fragment) {
         FragmentManager fragmentManager = getSupportFragmentManager();
         FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.fragment_container,fragment);
+        fragmentTransaction.replace(R.id.fragment_container, fragment);
         fragmentTransaction.commit();
+
     }
+
 }
