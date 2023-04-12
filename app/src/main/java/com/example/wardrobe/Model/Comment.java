@@ -5,9 +5,12 @@ public class Comment {
     private  String comment;
     private  String publisher;
 
+    private String commentid;
+
     public Comment(String comment, String publisher) {
         this.comment = comment;
         this.publisher = publisher;
+        this.commentid = comment;
     }
 
     public Comment() {
@@ -27,5 +30,13 @@ public class Comment {
 
     public void setPublisher(String publisher) {
         this.publisher = publisher;
+    }
+
+    public String getCommentid() {
+        return commentid;
+    }
+
+    public void setCommentid(String commentid) {
+        this.commentid = commentid;
     }
 }
