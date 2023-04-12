@@ -19,6 +19,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
 // import com.example.wardrobe.Adapter.MyDashboardAdapter;
+import com.example.wardrobe.Adapter.MyDashboardAdapter;
 import com.example.wardrobe.Model.Post;
 import com.example.wardrobe.Model.User;
 import com.example.wardrobe.R;
@@ -42,7 +43,7 @@ public class profileFragment extends Fragment {
     Button edit_profile;
 
     RecyclerView recyclerView;
-    //MyDashboardAdapter myDashboardAdapter;
+    MyDashboardAdapter myDashboardAdapter;
     List<Post> postList;
 
     FirebaseUser firebaseUser;
@@ -76,20 +77,19 @@ public class profileFragment extends Fragment {
         dashboard = view.findViewById(R.id.dashboard);
         bookmark = view.findViewById(R.id.bookmark);
 
-        /**
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
-        LinearLayoutManager linearLayoutManager = new GridLayoutManager(getContext(), 3 );
+        LinearLayoutManager linearLayoutManager = new GridLayoutManager(getContext(), 2 );
         recyclerView.setLayoutManager(linearLayoutManager);
         postList = new ArrayList<>();
         myDashboardAdapter = new MyDashboardAdapter(getContext(), postList);
         recyclerView.setAdapter(myDashboardAdapter);
-        */
+
 
         userInfo();
         getFollowers();
         getNrPosts();
-        // myDashboard();
+        myDashboard();
 
         if (profileid.equals(firebaseUser.getUid())) {
             edit_profile.setText("Edit Profile");
@@ -228,7 +228,6 @@ public class profileFragment extends Fragment {
         });
     }
 
-    /**
     private void myDashboard() {
         DatabaseReference databaseReference = FirebaseDatabase.getInstance().getReference("Posts");
         databaseReference.addValueEventListener(new ValueEventListener() {
@@ -253,7 +252,6 @@ public class profileFragment extends Fragment {
         });
     }
 
-     */
 
     @Override
     public void onStop() {
