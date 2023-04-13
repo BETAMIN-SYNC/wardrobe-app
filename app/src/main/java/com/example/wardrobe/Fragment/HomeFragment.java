@@ -26,7 +26,7 @@ import java.util.Objects;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 
-public class homeFragment extends Fragment {
+public class HomeFragment extends Fragment {
 
     CircleImageView image_profile;
     private RecyclerView recyclerView;
@@ -70,7 +70,7 @@ public class homeFragment extends Fragment {
 
         // directs in profile section
         image_profile.setOnClickListener(v -> {
-            profileFragment profileFragment = new profileFragment();
+            ProfileFragment profileFragment = new ProfileFragment();
             requireActivity().getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container, profileFragment).commit();
         });
 

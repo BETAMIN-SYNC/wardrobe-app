@@ -32,7 +32,7 @@ import java.util.Collections;
 import java.util.List;
 import java.util.Objects;
 
-public class profileFragment extends Fragment {
+public class ProfileFragment extends Fragment {
 
     ImageView image_profile, settings;
     TextView posts, followers, following, fullname, bio, username;

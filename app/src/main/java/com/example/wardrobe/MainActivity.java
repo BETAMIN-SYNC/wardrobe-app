@@ -9,11 +9,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.example.wardrobe.Fragment.homeFragment;
-import com.example.wardrobe.Fragment.inboxFragment;
-import com.example.wardrobe.Fragment.profileFragment;
-import com.example.wardrobe.Fragment.searchFragment;
-import com.example.wardrobe.Fragment.wardrobeFragment;
+import com.example.wardrobe.Fragment.HomeFragment;
+import com.example.wardrobe.Fragment.InboxFragment;
+import com.example.wardrobe.Fragment.ProfileFragment;
+import com.example.wardrobe.Fragment.SearchFragment;
+import com.example.wardrobe.Fragment.WardrobeFragment;
 import com.example.wardrobe.databinding.ActivityHomeBinding;
 
 
@@ -37,9 +37,9 @@ public class MainActivity extends AppCompatActivity {
             editor.putString("profileid", publisher);
             editor.apply();
 
-            replaceFragment(new profileFragment());
+            replaceFragment(new ProfileFragment());
         } else {
-            replaceFragment(new homeFragment());
+            replaceFragment(new HomeFragment());
         }
 
 
@@ -47,20 +47,20 @@ public class MainActivity extends AppCompatActivity {
 
             switch (item.getItemId()){
                 case R.id.home:
-                    replaceFragment(new homeFragment());
+                    replaceFragment(new HomeFragment());
                     break;
                 case R.id.search:
-                    replaceFragment(new searchFragment());
+                    replaceFragment(new SearchFragment());
                     break;
                 case R.id.post:
                     selectedFragment = null;
                     startActivity(new Intent(MainActivity.this, PostActivity.class));
                     break;
                 case R.id.wardrobe:
-                    replaceFragment(new wardrobeFragment());
+                    replaceFragment(new WardrobeFragment());
                     break;
                 case R.id.inbox:
-                    replaceFragment(new inboxFragment());
+                    replaceFragment(new InboxFragment());
                     break;
             }
 

@@ -26,7 +26,7 @@ import com.google.firebase.database.ValueEventListener;
 import java.util.ArrayList;
 import java.util.List;
 
-public class searchFragment extends Fragment {
+public class SearchFragment extends Fragment {
 
     private UserAdapter userAdapter;
     private List<User> mUsers;

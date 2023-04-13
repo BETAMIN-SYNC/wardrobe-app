@@ -3,6 +3,7 @@ package com.example.wardrobe.Adapter;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,9 +14,12 @@ import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
 import androidx.annotation.NonNull;
+import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.wardrobe.CommentsActivity;
+import com.example.wardrobe.Fragment.PostDetailFragment;
+import com.example.wardrobe.Fragment.ProfileFragment;
 import com.example.wardrobe.Model.Post;
 import com.example.wardrobe.Model.User;
 import com.example.wardrobe.R;
@@ -68,6 +72,42 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         nrLikes(viewholder.likes, post.getPostid());
         getComments(post.getPostid(), viewholder.comments);
         isSaved(post.getPostid(), viewholder.save);
+
+        viewholder.image_profile.setOnClickListener(view -> {
+            SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+            editor.putString("profileid", post.getPublisher());
+            editor.apply();
+
+            ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new PostDetailFragment()).commit();
+        });
+
+        viewholder.username.setOnClickListener(view -> {
+            SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+            editor.putString("profileid", post.getPublisher());
+            editor.apply();
+
+            ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new PostDetailFragment()).commit();
+        });
+
+        viewholder.publisher.setOnClickListener(view -> {
+            SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+            editor.putString("profileid", post.getPublisher());
+            editor.apply();
+
+            ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new PostDetailFragment()).commit();
+        });
+
+        viewholder.post_image.setOnClickListener(view -> {
+            SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+            editor.putString("postid", post.getPostid());
+            editor.apply();
+
+            ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                    new PostDetailFragment()).commit();
+        });
 
         viewholder.save.setOnClickListener(view -> {
             if (viewholder.save.getTag().equals("save")) {
