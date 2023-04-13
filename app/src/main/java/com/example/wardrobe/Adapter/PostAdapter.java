@@ -19,7 +19,6 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.wardrobe.CommentsActivity;
 import com.example.wardrobe.Fragment.PostDetailFragment;
-import com.example.wardrobe.Fragment.ProfileFragment;
 import com.example.wardrobe.Model.Post;
 import com.example.wardrobe.Model.User;
 import com.example.wardrobe.R;
@@ -342,7 +341,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.child(postid).exists()) {
-                    imageView.setImageResource(R.drawable.bookmark_thick);
+                    imageView.setImageResource(R.drawable.bookmark_fill);
                     imageView.setTag("saved");
                 } else {
                     imageView.setImageResource(R.drawable.bookmark);

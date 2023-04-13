@@ -1,5 +1,6 @@
 package com.example.wardrobe.Fragment;
 
+import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
@@ -41,6 +42,7 @@ public class HomeFragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
+
         image_profile = view.findViewById(R.id.image_profile);
         recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
@@ -59,7 +61,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 User user = snapshot.getValue(User.class);
-                Glide.with(getContext()).load(user.getImageurl()).into(image_profile);
+                Glide.with(requireContext()).load(Objects.requireNonNull(user).getImageurl()).into(image_profile);
             }
 
             @Override

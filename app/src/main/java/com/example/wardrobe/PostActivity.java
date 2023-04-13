@@ -3,6 +3,7 @@ package com.example.wardrobe;
 import android.app.ProgressDialog;
 import android.content.ContentResolver;
 import android.content.Intent;
+import android.content.pm.ActivityInfo;
 import android.net.Uri;
 import android.os.Bundle;
 import android.webkit.MimeTypeMap;
@@ -38,6 +39,8 @@ public class PostActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_post);
+
+        this.setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_PORTRAIT);
 
         close = findViewById(R.id.close);
         add_image = findViewById(R.id.add_image);
