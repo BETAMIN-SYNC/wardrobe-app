@@ -1,6 +1,5 @@
 package com.example.wardrobe.Fragment;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.os.Bundle;
@@ -9,7 +8,6 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -18,7 +16,6 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.bumptech.glide.Glide;
-// import com.example.wardrobe.Adapter.MyDashboardAdapter;
 import com.example.wardrobe.Adapter.MyDashboardAdapter;
 import com.example.wardrobe.Model.Post;
 import com.example.wardrobe.Model.User;
@@ -30,7 +27,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -41,6 +37,12 @@ public class profileFragment extends Fragment {
     ImageView image_profile, settings;
     TextView posts, followers, following, fullname, bio, username;
     Button edit_profile;
+
+    private List<String> mySaves;
+
+    RecyclerView recyclerView_saves;
+    MyDashboardAdapter myDashboardAdapter_saves;
+    List<Post> postList_saves;
 
     RecyclerView recyclerView;
     MyDashboardAdapter myDashboardAdapter;
@@ -85,11 +87,22 @@ public class profileFragment extends Fragment {
         myDashboardAdapter = new MyDashboardAdapter(getContext(), postList);
         recyclerView.setAdapter(myDashboardAdapter);
 
+        recyclerView_saves = view.findViewById(R.id.recycler_view_save);
+        recyclerView_saves.setHasFixedSize(true);
+        LinearLayoutManager linearLayoutManager_saves = new GridLayoutManager(getContext(), 2 );
+        recyclerView_saves.setLayoutManager(linearLayoutManager_saves);
+        postList_saves = new ArrayList<>();
+        myDashboardAdapter_saves = new MyDashboardAdapter(getContext(), postList_saves);
+        recyclerView_saves.setAdapter(myDashboardAdapter_saves);
+
+        recyclerView.setVisibility(View.VISIBLE);
+        recyclerView_saves.setVisibility(View.GONE);
 
         userInfo();
         getFollowers();
         getNrPosts();
         myDashboard();
+        mysaves();
 
         if (profileid.equals(firebaseUser.getUid())) {
             edit_profile.setText("Edit Profile");
@@ -119,6 +132,16 @@ public class profileFragment extends Fragment {
                             .child("followers").child(firebaseUser.getUid()).removeValue();
                     break;
             }
+        });
+
+        dashboard.setOnClickListener(view1 -> {
+            recyclerView.setVisibility(View.VISIBLE);
+            recyclerView_saves.setVisibility(View.GONE);
+        });
+
+        bookmark.setOnClickListener(v -> {
+            recyclerView.setVisibility(View.GONE);
+            recyclerView_saves.setVisibility(View.VISIBLE);
         });
 
         return view;
@@ -236,13 +259,60 @@ public class profileFragment extends Fragment {
                 postList.clear();
                 for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                     Post post = dataSnapshot.getValue(Post.class);
-                    assert post!= null;
+                    assert post != null;
                     if (post.getPublisher().equals(profileid)) {
                         postList.add(post);
                     }
                 }
                 Collections.reverse(postList);
                 myDashboardAdapter.notifyDataSetChanged();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void mysaves() {
+        mySaves = new ArrayList<>();
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Saves")
+                .child(firebaseUser.getUid());
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    mySaves.add(dataSnapshot.getKey());
+                }
+
+                readSaves();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError error) {
+
+            }
+        });
+    }
+
+    private void readSaves() {
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts");
+        reference.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot snapshot) {
+                postList_saves.clear();
+                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+                    Post post = dataSnapshot.getValue(Post.class);
+
+                    for (String id : mySaves) {
+                        assert post != null;
+                        if (post.getPostid().equals(id)) {
+                            postList_saves.add(post);
+                        }
+                    }
+                }
+                myDashboardAdapter_saves.notifyDataSetChanged();
             }
 
             @Override
@@ -276,5 +346,4 @@ public class profileFragment extends Fragment {
         editor.putString("profileid", firebaseUser.getUid());
         editor.apply();
     }
-
 }

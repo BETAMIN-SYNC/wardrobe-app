@@ -5,11 +5,10 @@
     android:layout_height="match_parent"
     tools:context=".Fragment.homeFragment">
 
-    <!--    added-->
     <com.google.android.material.appbar.AppBarLayout
+        android:id="@+id/bar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/bar">
+        android:layout_height="wrap_content">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/homeTopAppBar"
@@ -26,8 +25,8 @@
                 android:layout_gravity="start"
                 android:background="?android:attr/selectableItemBackground"
                 android:baselineAlignBottom="false"
-                android:src="@mipmap/ic_launcher"
-                android:contentDescription="@string/profile_icon" />
+                android:contentDescription="@string/profile_icon"
+                android:src="@mipmap/ic_launcher" />
 
             <ImageButton
                 android:id="@+id/optionsBtn"
@@ -57,11 +56,14 @@
 
     </com.google.android.material.appbar.AppBarLayout>
 
-<!--    added-->
+    <!--    added-->
+
     <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/recycler_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/bar"
-        android:id="@+id/recycler_view"/>
+        android:layout_below="@+id/bar">
+
+    </androidx.recyclerview.widget.RecyclerView>
 
 </RelativeLayout>

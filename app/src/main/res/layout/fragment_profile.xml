@@ -208,30 +208,35 @@
                 android:orientation="horizontal">
 
                 <ImageButton
+                    android:id="@+id/dashboard"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:id="@+id/dashboard"
-                    android:src="@drawable/dashboard"
                     android:contentDescription="@string/dashboard_icon"
-                    style="?android:attr/buttonBarButtonStyle"/>
+                    android:src="@drawable/dashboard" />
 
                 <ImageButton
+                    android:id="@+id/bookmark"
+                    style="?android:attr/buttonBarButtonStyle"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:id="@+id/bookmark"
-                    android:src="@drawable/bookmark"
                     android:contentDescription="@string/bookmark_icon"
-                    style="?android:attr/buttonBarButtonStyle"/>
+                    android:src="@drawable/bookmark" />
 
             </LinearLayout>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view_save"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:visibility="visible" />
+                android:visibility="gone" />
 
         </LinearLayout>
 
