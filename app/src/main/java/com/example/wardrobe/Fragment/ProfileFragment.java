@@ -22,6 +22,7 @@ import com.example.wardrobe.EditProfileActivity;
 import com.example.wardrobe.FollowersActivity;
 import com.example.wardrobe.Model.Post;
 import com.example.wardrobe.Model.User;
+import com.example.wardrobe.SettingsActivity;
 import com.example.wardrobe.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -137,6 +138,9 @@ public class ProfileFragment extends Fragment {
                     break;
             }
         });
+
+        settings.setOnClickListener(view12 -> startActivity(new Intent(getContext(), SettingsActivity.class)));
+
 
         dashboard.setOnClickListener(view1 -> {
             recyclerView.setVisibility(View.VISIBLE);

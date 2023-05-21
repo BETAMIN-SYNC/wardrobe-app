@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <ImageView
         android:layout_width="wrap_content"
@@ -32,88 +32,96 @@
                 tools:ignore="ImageContrastCheck" />
 
             <TextView
+                android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:fontFamily="@font/cabin"
-                android:id="@+id/username"
                 android:layout_gravity="center_vertical"
+                android:fontFamily="@font/cabin"
+                android:textColor="@color/black"
                 android:textSize="16sp"
-                android:textStyle="bold"
-                android:textColor="@color/black" />
+                android:textStyle="bold" />
 
         </LinearLayout>
 
-        <ImageView
-            android:id="@+id/post_image"
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/post_image"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintDimensionRatio="1:1"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp">
 
-             <ImageView
-                 android:layout_width="25dp"
-                 android:layout_height="25dp"
-                 android:layout_alignParentStart="true"
-                 android:id="@+id/like"
-                 android:src="@drawable/add"/>
+            <ImageView
+                android:id="@+id/like"
+                android:layout_width="25dp"
+                android:layout_height="25dp"
+                android:layout_alignParentStart="true"
+                android:src="@drawable/add" />
 
             <ImageView
+                android:id="@+id/save"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_alignParentEnd="true"
-                android:id="@+id/save"
-                android:src="@drawable/bookmark"/>
+                android:src="@drawable/bookmark" />
 
             <ImageView
+                android:id="@+id/comment"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
                 android:layout_toStartOf="@+id/save"
-                android:id="@+id/comment"
-                android:src="@drawable/add"/>
+                android:src="@drawable/add" />
 
         </RelativeLayout>
 
-<!--        added-->
+        <!--        added-->
         <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="8dp"
-            android:fontFamily="@font/cabin"
             android:id="@+id/likes"
-            android:textStyle="bold"
-            android:textColor="@color/button_color" />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/cabin"
+            android:textColor="@color/button_color"
+            android:textStyle="bold" />
+
+        <TextView
             android:id="@+id/publisher"
-            android:textStyle="bold"
-            android:textColor="@color/button_color" />
-
-        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:fontFamily="@font/cabin"
-            android:id="@+id/description"
-            android:textStyle="bold"
-            android:textColor="@color/button_color" />
+            android:textColor="@color/button_color"
+            android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/description"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:fontFamily="@font/cabin"
+            android:textColor="@color/button_color"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/comments"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="10dp"
             android:fontFamily="@font/cabin"
-            android:id="@+id/comments"
-            android:textStyle="bold"
-            android:textColor="@color/button_color" />
+            android:textColor="@color/button_color"
+            android:textStyle="bold" />
 
     </LinearLayout>
 

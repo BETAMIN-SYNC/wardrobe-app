@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
+import android.widget.ProgressBar;
 
 import com.bumptech.glide.Glide;
 import com.example.wardrobe.Adapter.PostAdapter;
@@ -41,12 +42,13 @@ public class HomeFragment extends Fragment {
 
     private List<String> followingList;
 
+    ProgressBar progress_circular;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home, container, false);
-
 
         image_profile = view.findViewById(R.id.image_profile);
         notifBtn = view.findViewById(R.id.notifBtn);
@@ -59,6 +61,8 @@ public class HomeFragment extends Fragment {
         postLists = new ArrayList<>();
         postAdapter = new PostAdapter(getContext(), postLists);
         recyclerView.setAdapter(postAdapter);
+
+        progress_circular = view.findViewById(R.id.progress_circular);
 
         FirebaseUser firebaseUser = FirebaseAuth.getInstance().getCurrentUser();
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users").child(Objects.requireNonNull(firebaseUser).getUid());
@@ -135,6 +139,7 @@ public class HomeFragment extends Fragment {
                     }
                 }
                 postAdapter.notifyDataSetChanged();
+                progress_circular.setVisibility(View.GONE);
             }
 
             @Override
