@@ -30,7 +30,7 @@ public class SearchFragment extends Fragment {
 
     private UserAdapter userAdapter;
     private List<User> mUsers;
-
+    private RecyclerView recyclerView;
     EditText search_bar;
 
     @Override
@@ -38,7 +38,7 @@ public class SearchFragment extends Fragment {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_search, container, false);
 
-        RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
+        recyclerView = view.findViewById(R.id.recycler_view);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
 
@@ -48,7 +48,6 @@ public class SearchFragment extends Fragment {
         userAdapter = new UserAdapter(getContext(), mUsers, true);
         recyclerView.setAdapter(userAdapter);
 
-        readUsers();
         search_bar.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence s, int start, int count, int after) {
@@ -70,50 +69,59 @@ public class SearchFragment extends Fragment {
     }
 
     private void searchUsers(String s) {
+        if (s.isEmpty()) {
+            mUsers.clear();
+            userAdapter.notifyDataSetChanged();
+            // Hide the RecyclerView or perform any other UI modifications
+            recyclerView.setVisibility(View.GONE);
+        } else {
+            Query query = FirebaseDatabase.getInstance().getReference("Users")
+                    .orderByChild("username")
+                    .startAt(s)
+                    .endAt(s + "\uf8ff");
 
-        Query query = FirebaseDatabase.getInstance().getReference("Users").orderByChild("username")
-                .startAt(s)
-                .endAt(s+"\uf8ff");
-
-        query.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                mUsers.clear();
-                for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
-                    User user = dataSnapshot.getValue(User.class);
-                    mUsers.add(user);
-                }
-                userAdapter.notifyDataSetChanged();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
-    }
-
-    private void readUsers() {
-
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
-        reference.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot snapshot) {
-                if (search_bar.getText().toString().equals("")) {
+            query.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(@NonNull DataSnapshot snapshot) {
                     mUsers.clear();
                     for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
                         User user = dataSnapshot.getValue(User.class);
                         mUsers.add(user);
                     }
-
                     userAdapter.notifyDataSetChanged();
+                    // Show the RecyclerView or perform any other UI modifications
+                    recyclerView.setVisibility(View.VISIBLE);
                 }
-            }
 
-            @Override
-            public void onCancelled(@NonNull DatabaseError error) {
-
-            }
-        });
+                @Override
+                public void onCancelled(@NonNull DatabaseError error) {
+                    // Handle the error if needed
+                }
+            });
+        }
     }
+
+//    private void readUsers() {
+//
+//        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Users");
+//        reference.addValueEventListener(new ValueEventListener() {
+//            @Override
+//            public void onDataChange(@NonNull DataSnapshot snapshot) {
+//                if (search_bar.getText().toString().equals("")) {
+//                    mUsers.clear();
+//                    for (DataSnapshot dataSnapshot : snapshot.getChildren()) {
+//                        User user = dataSnapshot.getValue(User.class);
+//                        mUsers.add(user);
+//                    }
+//
+//                    userAdapter.notifyDataSetChanged();
+//                }
+//            }
+//
+//            @Override
+//            public void onCancelled(@NonNull DatabaseError error) {
+//
+//            }
+//        });
+//    }
 }

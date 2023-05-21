@@ -1,10 +1,8 @@
 package com.example.wardrobe.Fragment;
 
-import android.content.pm.ActivityInfo;
 import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -59,7 +57,7 @@ public class HomeFragment extends Fragment {
         linearLayoutManager.setStackFromEnd(true);
         recyclerView.setLayoutManager(linearLayoutManager);
         postLists = new ArrayList<>();
-        postAdapter = new PostAdapter(getContext(), postLists);
+        postAdapter = new PostAdapter(getContext(), postLists, true);
         recyclerView.setAdapter(postAdapter);
 
         progress_circular = view.findViewById(R.id.progress_circular);

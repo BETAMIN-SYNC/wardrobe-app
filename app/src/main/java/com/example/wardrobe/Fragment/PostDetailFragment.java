@@ -47,7 +47,7 @@ public class PostDetailFragment extends Fragment {
         recyclerView.setLayoutManager(linearLayoutManager);
 
         postList = new ArrayList<>();
-        postAdapter = new PostAdapter(getContext(), postList);
+        postAdapter = new PostAdapter(getContext(), postList, true);
         recyclerView.setAdapter(postAdapter);
 
         readPost();

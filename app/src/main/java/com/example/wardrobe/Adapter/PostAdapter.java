@@ -13,14 +13,18 @@ import android.widget.LinearLayout;
 import android.widget.PopupMenu;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
 import com.example.wardrobe.CommentsActivity;
 import com.example.wardrobe.FollowersActivity;
 import com.example.wardrobe.Fragment.PostDetailFragment;
+import com.example.wardrobe.Fragment.ProfileFragment;
+import com.example.wardrobe.MainActivity;
 import com.example.wardrobe.Model.Post;
 import com.example.wardrobe.Model.User;
 import com.example.wardrobe.R;
@@ -31,9 +35,9 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
 import java.util.HashMap;
 import java.util.List;
-import java.util.Objects;
 
 public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
 
@@ -41,10 +45,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
     public List<Post> mPost;
 
     private FirebaseUser firebaseUser;
+    private final boolean isfragment;
 
-    public PostAdapter(Context mContext, List<Post> mPost) {
+
+    public PostAdapter(Context mContext, List<Post> mPost, boolean isfragment) {
         this.mContext = mContext;
         this.mPost = mPost;
+        this.isfragment = isfragment;
     }
 
     @NonNull
@@ -77,30 +84,48 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         isSaved(post.getPostid(), viewholder.save);
 
         viewholder.image_profile.setOnClickListener(view -> {
-            SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
-            editor.putString("profileid", post.getPublisher());
-            editor.apply();
+            if (isfragment) {
+                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+                editor.putString("profileid", post.getPublisher());
+                editor.apply();
 
-            ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new PostDetailFragment()).commit();
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ProfileFragment()).commit();
+            } else {
+                Intent intent = new Intent(mContext, MainActivity.class);
+                intent.putExtra("publisherid", post.getPublisher());
+                mContext.startActivity(intent);
+            }
         });
 
         viewholder.username.setOnClickListener(view -> {
-            SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
-            editor.putString("profileid", post.getPublisher());
-            editor.apply();
+            if (isfragment) {
+                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+                editor.putString("profileid", post.getPublisher());
+                editor.apply();
 
-            ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new PostDetailFragment()).commit();
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ProfileFragment()).commit();
+            } else {
+                Intent intent = new Intent(mContext, MainActivity.class);
+                intent.putExtra("publisherid", post.getPublisher());
+                mContext.startActivity(intent);
+            }
         });
 
         viewholder.publisher.setOnClickListener(view -> {
-            SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
-            editor.putString("profileid", post.getPublisher());
-            editor.apply();
+            if (isfragment) {
+                SharedPreferences.Editor editor = mContext.getSharedPreferences("PREFS", Context.MODE_PRIVATE).edit();
+                editor.putString("profileid", post.getPublisher());
+                editor.apply();
 
-            ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
-                    new PostDetailFragment()).commit();
+                ((FragmentActivity)mContext).getSupportFragmentManager().beginTransaction().replace(R.id.fragment_container,
+                        new ProfileFragment()).commit();
+            } else {
+                Intent intent = new Intent(mContext, MainActivity.class);
+                intent.putExtra("publisherid", post.getPublisher());
+                mContext.startActivity(intent);
+            }
         });
 
         viewholder.post_image.setOnClickListener(view -> {
@@ -172,6 +197,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                         return true;
                     case R.id.report:
                         Toast.makeText(mContext, "Reported", Toast.LENGTH_SHORT).show();
+
                         return true;
                     default:
                         return false;
@@ -316,7 +342,7 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
                 LinearLayout.LayoutParams.MATCH_PARENT,
                 LinearLayout.LayoutParams.MATCH_PARENT
 
-                );
+        );
         editText.setLayoutParams(lp);
         alertDialog.setView(editText);
 
@@ -338,13 +364,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
         alertDialog.show();
     }
 
-    private void getText(String postid, EditText editText){
+    private void getText(String postid, final EditText editText){
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Posts")
                 .child(postid);
         reference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
-                editText.setText(Objects.requireNonNull(snapshot.getValue(Post.class)).getDescription());
+                editText.setText(snapshot.getValue(Post.class).getDescription());
             }
 
             @Override

@@ -10,7 +10,7 @@ public class Comment {
     public Comment(String comment, String publisher) {
         this.comment = comment;
         this.publisher = publisher;
-        this.commentid = comment;
+        this.commentid = commentid;
     }
 
     public Comment() {
