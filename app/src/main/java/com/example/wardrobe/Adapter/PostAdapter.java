@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.wardrobe.CommentsActivity;
+import com.example.wardrobe.FollowersActivity;
 import com.example.wardrobe.Fragment.PostDetailFragment;
 import com.example.wardrobe.Model.Post;
 import com.example.wardrobe.Model.User;
@@ -140,6 +141,13 @@ public class PostAdapter extends RecyclerView.Adapter<PostAdapter.ViewHolder> {
             Intent intent = new Intent(mContext, CommentsActivity.class);
             intent.putExtra("postid", post.getPostid());
             intent.putExtra("publisherid", post.getPublisher());
+            mContext.startActivity(intent);
+        });
+
+        viewholder.likes.setOnClickListener(v -> {
+            Intent intent = new Intent(mContext, FollowersActivity.class);
+            intent.putExtra("id",post.getPostid());
+            intent.putExtra("title","likes");
             mContext.startActivity(intent);
         });
 

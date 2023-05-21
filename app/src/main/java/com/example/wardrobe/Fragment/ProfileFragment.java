@@ -19,6 +19,7 @@ import android.widget.TextView;
 import com.bumptech.glide.Glide;
 import com.example.wardrobe.Adapter.MyDashboardAdapter;
 import com.example.wardrobe.EditProfileActivity;
+import com.example.wardrobe.FollowersActivity;
 import com.example.wardrobe.Model.Post;
 import com.example.wardrobe.Model.User;
 import com.example.wardrobe.R;
@@ -147,6 +148,20 @@ public class ProfileFragment extends Fragment {
             recyclerView_saves.setVisibility(View.VISIBLE);
         });
 
+        followers.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), FollowersActivity.class);
+            intent.putExtra("id", profileid);
+            intent.putExtra("title","followers");
+            startActivity(intent);
+        });
+
+        following.setOnClickListener(v -> {
+            Intent intent = new Intent(getContext(), FollowersActivity.class);
+            intent.putExtra("id", profileid);
+            intent.putExtra("title","following");
+            startActivity(intent);
+        });
+
         return view;
     }
 
@@ -211,9 +226,7 @@ public class ProfileFragment extends Fragment {
 
     // retrieves the number of followers and following from the Firebase database and display them on the UI.
     private void getFollowers() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
-                .child("Follow").child(profileid).child("followers");
-
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow").child(profileid).child("followers");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -226,9 +239,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference()
-                .child("Follow").child(profileid).child("following");
-
+        DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Follow").child(profileid).child("following");
         reference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -256,7 +267,6 @@ public class ProfileFragment extends Fragment {
                         i++;
                     }
                 }
-
                 posts.setText(""+i);
             }
 
