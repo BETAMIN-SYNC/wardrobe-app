@@ -33,46 +33,136 @@
     </com.google.android.material.appbar.AppBarLayout>
 
     <LinearLayout
-        android:layout_width="match_parent"
+        android:layout_below="@+id/bar"
+        android:layout_width="fill_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:layout_below="@+id/bar">
+        android:orientation="horizontal"
+        android:weightSum="3"
+        android:baselineAligned="false">
 
-        <Button
-            android:id="@+id/formalBtn"
-            android:layout_width="match_parent"
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Formal Wear" />
+            android:layout_weight="1"
+            android:padding="6dp"
+            android:orientation="vertical" >
 
-        <Button
-            android:id="@+id/casualBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Casual Wear" />
+            <ImageButton
+                android:id="@+id/formalBtn"
+                android:layout_width="wrap_content"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/formal_attire"
+                android:contentDescription="Formal Attire" />
 
-        <Button
-            android:id="@+id/activeBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Active Wear" />
+            <TextView
+                android:id="@+id/textViewWd1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="Formal Attire"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
 
-        <Button
-            android:id="@+id/businessBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Business Attire" />
+            <ImageButton
+                android:id="@+id/businessBtn"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/business_attire"
+                android:contentDescription="Business Attire" />
 
-        <Button
-            android:id="@+id/eveningBtn"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="Evening Wear" />
+            <TextView
+                android:id="@+id/textViewWd4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="Bussiness Attire"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
 
-        <Button
-            android:id="@+id/othersBtn"
-            android:layout_width="match_parent"
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:text="Others" />
+            android:layout_weight="1"
+            android:padding="6dp"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/casualBtn"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/casual_attire"
+                android:contentDescription="Casual Attire" />
+
+            <TextView
+                android:id="@+id/textViewWd2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="Casual Attire"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <ImageButton
+                android:id="@+id/eveningBtn"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/evening_wear"
+                android:contentDescription="@string/evening_wear" />
+
+            <TextView
+                android:id="@+id/textViewWd5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="Evening Wear"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:padding="6dp"
+            android:orientation="vertical" >
+
+            <ImageButton
+                android:id="@+id/activeBtn"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="fitXY"
+                android:src="@drawable/active_wear"
+                android:contentDescription="Active Wear" />
+
+            <TextView
+                android:id="@+id/textViewWd3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="20dp"
+                android:fontFamily="@font/montserrat_semi_bold"
+                android:text="Active Wear"
+                android:textColor="@color/black"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/othersBtn"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="70dp"
+                android:text="Others" />
+        </LinearLayout>
+
     </LinearLayout>
 
 </RelativeLayout>
