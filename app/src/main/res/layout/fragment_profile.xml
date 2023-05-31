@@ -38,7 +38,7 @@
                 android:contentDescription="@string/settings_icon"
                 android:minWidth="32dp"
                 android:minHeight="48dp"
-                android:layout_marginEnd="10dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/settings" />
 
         </androidx.appcompat.widget.Toolbar>
@@ -65,8 +65,8 @@
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/image_profile"
-                    android:layout_width="80dp"
-                    android:layout_height="80dp"
+                    android:layout_width="75dp"
+                    android:layout_height="75dp"
                     android:layout_marginTop="15dp"
                     tools:layout_editor_absoluteX="292dp"
                     tools:layout_editor_absoluteY="-3dp" />
@@ -84,8 +84,8 @@
                         android:layout_height="wrap_content"
                         android:maxLines="1"
                         android:textColor="@color/black"
-                        android:fontFamily="@font/cabin"
-                        android:textSize="16sp"
+                        android:fontFamily="@font/montserrat_semi_bold"
+                        android:textSize="15sp"
                         android:textStyle="bold" />
 
                     <Button
@@ -93,8 +93,10 @@
                         android:layout_width="120dp"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="20dp"
-                        android:background="@drawable/btn_light"
-                        android:minHeight="29dp" />
+                        android:background="@drawable/btn_blue"
+                        android:minHeight="29dp"
+                        android:textSize="11sp"
+                        android:textColor="@color/white"/>
 
                 </LinearLayout>
 
@@ -102,7 +104,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="center"
-                    android:layout_marginStart="60dp"
+                    android:layout_marginStart="40dp"
+                    android:layout_marginEnd="10dp"
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
 
@@ -138,7 +141,7 @@
                 <LinearLayout
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_gravity="center"
+                    android:layout_gravity="right|center"
                     android:layout_marginStart="10dp"
                     android:layout_marginTop="10dp"
                     android:orientation="vertical">
@@ -148,6 +151,7 @@
                         android:layout_width="33dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:textAlignment="center"
                         android:textColor="@color/black"
                         android:fontFamily="@font/cabin"
                         android:textSize="14sp"
@@ -159,6 +163,7 @@
                         android:layout_width="33dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:textAlignment="center"
                         android:textColor="@color/black"
                         android:fontFamily="@font/cabin"
                         android:textSize="14sp"
@@ -170,6 +175,7 @@
                         android:layout_width="33dp"
                         android:layout_height="wrap_content"
                         android:layout_gravity="center"
+                        android:textAlignment="center"
                         android:textColor="@color/black"
                         android:fontFamily="@font/cabin"
                         android:textSize="14sp"
@@ -183,7 +189,10 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:padding="12dp"
+                android:padding="5dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginRight="16dp"
+                android:layout_marginBottom="10dp"
                 android:id="@+id/mid_bar"
                 android:orientation="vertical">
 
@@ -193,6 +202,8 @@
                     android:layout_marginTop="5dp"
                     android:id="@+id/bio"
                     android:maxLines="5"
+                    android:fontFamily="@font/cabin"
+                    android:textSize="14sp"
                     android:textColor="@color/black"/>
 
             </LinearLayout>
@@ -230,7 +241,10 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginLeft="5dp"
+                android:layout_marginRight="5dp"/>
 
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/recycler_view_save"

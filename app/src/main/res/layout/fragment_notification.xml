@@ -26,7 +26,8 @@
                     android:layout_height="wrap_content"
                     android:text="Notifications"
                     android:textSize="18sp"
-                    android:textStyle="bold"
+                    android:fontFamily="@font/montserrat_bold"
+                    android:textStyle="italic"
                     android:textColor="@color/lighter_black"/>
             </RelativeLayout>
             
@@ -36,6 +37,7 @@
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"
+        android:layout_marginTop="10dp"
         android:layout_height="wrap_content"
         android:id="@+id/recycler_view"
         android:layout_below="@id/bar"/>
