@@ -30,9 +30,9 @@
     <string name="facebook_btn">Facebook</string>
     <string name="instagram_btn">Instagram</string>
     <string name="posts">Posts</string>
-    <string name="follow">follow</string>
-    <string name="following">following</string>
-    <string name="followers">followers</string>
+    <string name="follow">Follow</string>
+    <string name="following">Following</string>
+    <string name="followers">Followers</string>
     <string name="fullname">Full Name</string>
     <string name="search">Search</string>
     <string name="search_btn">Search icon</string>
