@@ -7,8 +7,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageButton;
-
 import com.example.wardrobe.ActiveActivity;
 import com.example.wardrobe.BusinessActivity;
 import com.example.wardrobe.CasualActivity;

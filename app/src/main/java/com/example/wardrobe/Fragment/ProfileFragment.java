@@ -122,19 +122,19 @@ public class ProfileFragment extends Fragment {
                 case "Edit Profile":
                     startActivity(new Intent(getContext(), EditProfileActivity.class));
                     break;
-                case "follow":
+                case "Follow":
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
-                            .child("following").child(profileid).setValue(true);
+                            .child("Following").child(profileid).setValue(true);
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileid)
-                            .child("followers").child(firebaseUser.getUid()).setValue(true);
+                            .child("Followers").child(firebaseUser.getUid()).setValue(true);
 
                     addNotifications();
                     break;
-                case "following":
+                case "Following":
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
-                            .child("following").child(profileid).removeValue();
+                            .child("Following").child(profileid).removeValue();
                     FirebaseDatabase.getInstance().getReference().child("Follow").child(profileid)
-                            .child("followers").child(firebaseUser.getUid()).removeValue();
+                            .child("Followers").child(firebaseUser.getUid()).removeValue();
                     break;
             }
         });
@@ -155,14 +155,14 @@ public class ProfileFragment extends Fragment {
         followers.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), FollowersActivity.class);
             intent.putExtra("id", profileid);
-            intent.putExtra("title","followers");
+            intent.putExtra("title","Followers");
             startActivity(intent);
         });
 
         following.setOnClickListener(v -> {
             Intent intent = new Intent(getContext(), FollowersActivity.class);
             intent.putExtra("id", profileid);
-            intent.putExtra("title","following");
+            intent.putExtra("title","Following");
             startActivity(intent);
         });
 
@@ -193,7 +193,6 @@ public class ProfileFragment extends Fragment {
 
                 User user = snapshot.getValue(User.class);
 
-                assert user != null;
                 Glide.with(getContext()).load(user.getImageurl()).into(image_profile);
                 username.setText(user.getUsername());
                 fullname.setText(user.getFullname());
@@ -210,7 +209,7 @@ public class ProfileFragment extends Fragment {
     // checks if the current user is following the displayed user.
     private void checkFollow() {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
-                .child("Follow").child(firebaseUser.getUid()).child("following");
+                .child("Follow").child(firebaseUser.getUid()).child("Following");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -230,7 +229,7 @@ public class ProfileFragment extends Fragment {
 
     // retrieves the number of followers and following from the Firebase database and display them on the UI.
     private void getFollowers() {
-        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow").child(profileid).child("followers");
+        DatabaseReference reference = FirebaseDatabase.getInstance().getReference("Follow").child(profileid).child("Followers");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
@@ -243,7 +242,7 @@ public class ProfileFragment extends Fragment {
             }
         });
 
-        DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Follow").child(profileid).child("following");
+        DatabaseReference reference1 = FirebaseDatabase.getInstance().getReference("Follow").child(profileid).child("Following");
         reference1.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {

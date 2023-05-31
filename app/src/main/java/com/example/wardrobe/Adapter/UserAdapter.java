@@ -86,18 +86,18 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
       });
 
         viewholder.btn_follow.setOnClickListener(view -> {
-            if (viewholder.btn_follow.getText().toString().equals("follow")) {
+            if (viewholder.btn_follow.getText().toString().equals("Follow")) {
                 FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
-                        .child("following").child(user.getId()).setValue(true);
+                        .child("Following").child(user.getId()).setValue(true);
                 FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId())
-                        .child("followers").child(firebaseUser.getUid()).setValue(true);
+                        .child("Followers").child(firebaseUser.getUid()).setValue(true);
 
                 addNotifications(user.getId());
             } else {
                 FirebaseDatabase.getInstance().getReference().child("Follow").child(firebaseUser.getUid())
-                        .child("following").child(user.getId()).removeValue();
+                        .child("Following").child(user.getId()).removeValue();
                 FirebaseDatabase.getInstance().getReference().child("Follow").child(user.getId())
-                        .child("followers").child(firebaseUser.getUid()).removeValue();
+                        .child("Followers").child(firebaseUser.getUid()).removeValue();
             }
         });
     }
@@ -138,7 +138,7 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
 
     private void isFollowing(String userid, Button button) {
         DatabaseReference reference = FirebaseDatabase.getInstance().getReference()
-                .child("Follow").child(firebaseUser.getUid()).child("following");
+                .child("Follow").child(firebaseUser.getUid()).child("Following");
         reference.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
