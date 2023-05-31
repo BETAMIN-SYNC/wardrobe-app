@@ -24,10 +24,10 @@
 
                 <ImageView
                     android:id="@+id/close"
-                    android:layout_width="wrap_content"
+                    android:layout_width="15dp"
                     android:layout_height="wrap_content"
                     android:layout_alignParentStart="true"
-                    android:layout_marginStart="0dp"
+                    android:layout_marginStart="10dp"
                     android:src="@drawable/close" />
 
                 <TextView
@@ -36,7 +36,7 @@
                     android:layout_height="wrap_content"
                     android:layout_alignParentEnd="true"
                     android:layout_centerVertical="true"
-                    android:layout_marginEnd="10dp"
+                    android:layout_marginEnd="20dp"
                     android:fontFamily="@font/montserrat_semi_bold"
                     android:text="POST"
                     android:textColor="@color/button_color"
@@ -68,6 +68,8 @@
             android:fontFamily="@font/cabin"
             android:hint="Description"
             android:maxLines="5"
+            android:layout_marginLeft="10dp"
+            android:layout_marginRight="10dp"
             android:minHeight="48dp"
             android:textColor="@color/black"
             android:textSize="16sp" />

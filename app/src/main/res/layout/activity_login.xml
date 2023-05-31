@@ -48,7 +48,7 @@
                 android:layout_height="wrap_content"
                 android:fontFamily="@font/montserrat_semi_bold"
                 android:gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_marginTop="22dp"
                 android:text="@string/welcome_back"
                 android:textAlignment="center"
                 android:textColor="@color/black"
