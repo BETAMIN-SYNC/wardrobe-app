@@ -8,13 +8,10 @@ import android.widget.ImageView;
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.bumptech.glide.Glide;
 import com.example.wardrobe.Fragment.PostDetailFragment;
-import com.example.wardrobe.Fragment.ProfileFragment;
 import com.example.wardrobe.Model.Post;
 import com.example.wardrobe.R;
-
 import java.util.List;
 
 public class MyDashboardAdapter extends RecyclerView.Adapter<MyDashboardAdapter.ViewHolder> {
@@ -58,7 +55,6 @@ public class MyDashboardAdapter extends RecyclerView.Adapter<MyDashboardAdapter.
     }
 
     public static class ViewHolder extends RecyclerView.ViewHolder{
-
         public ImageView post_image;
 
         public ViewHolder(@NonNull View itemView) {
