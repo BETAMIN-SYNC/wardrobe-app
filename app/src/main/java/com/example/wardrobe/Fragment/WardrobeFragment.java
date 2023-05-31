@@ -9,8 +9,12 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageButton;
 
+import com.example.wardrobe.ActiveActivity;
+import com.example.wardrobe.BusinessActivity;
 import com.example.wardrobe.CasualActivity;
+import com.example.wardrobe.EveningActivity;
 import com.example.wardrobe.FormalActivity;
+import com.example.wardrobe.OthersActivity;
 import com.example.wardrobe.R;
 
 
@@ -33,6 +37,10 @@ public class WardrobeFragment extends Fragment {
 
         formalBtn.setOnClickListener(view1 -> startActivity(new Intent(getContext(), FormalActivity.class)));
         casualBtn.setOnClickListener(view1 -> startActivity(new Intent(getContext(), CasualActivity.class)));
+        activeBtn.setOnClickListener(view1 -> startActivity(new Intent(getContext(), ActiveActivity.class)));
+        businessBtn.setOnClickListener(view1 -> startActivity(new Intent(getContext(), BusinessActivity.class)));
+        eveningBtn.setOnClickListener(view1 -> startActivity(new Intent(getContext(), EveningActivity.class)));
+        othersBtn.setOnClickListener(view1 -> startActivity(new Intent(getContext(), OthersActivity.class)));
 
         return view;
     }
