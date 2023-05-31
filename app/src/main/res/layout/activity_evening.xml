@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".FormalActivity">
+    tools:context=".EveningActivity">
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
@@ -20,7 +20,7 @@
             android:textColor="@color/button_color"
             android:textSize="18sp"
             android:textStyle="italic"
-            android:text="Formal Wear"/>
+            android:text="Evening Wear"/>
 
     </androidx.appcompat.widget.Toolbar>
 

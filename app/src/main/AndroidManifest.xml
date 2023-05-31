@@ -21,7 +21,19 @@
         android:theme="@style/Theme.Wardrobe"
         tools:targetApi="31">
         <activity
-            android:name=".ShowFormalActivity"
+            android:name=".OthersActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EveningActivity"
+            android:exported="false" />
+        <activity
+            android:name=".BusinessActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ActiveActivity"
+            android:exported="false" />
+        <activity
+            android:name=".CasualActivity"
             android:exported="false" />
         <activity
             android:name=".FormalActivity"
