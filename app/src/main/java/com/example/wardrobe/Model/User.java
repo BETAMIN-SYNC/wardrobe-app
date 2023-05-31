@@ -16,6 +16,7 @@ public class User {
     }
 
     public User() {
+
     }
 
     public String getId() {

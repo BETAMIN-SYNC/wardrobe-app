@@ -29,18 +29,6 @@
                 android:src="@mipmap/ic_launcher" />
 
             <ImageButton
-                android:id="@+id/optionsBtn"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="end"
-                android:background="?android:attr/selectableItemBackground"
-                android:baselineAlignBottom="false"
-                android:contentDescription="@string/options_icon"
-                android:minWidth="48dp"
-                android:minHeight="48dp"
-                android:src="@drawable/option" />
-
-            <ImageButton
                 android:id="@+id/notifBtn"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

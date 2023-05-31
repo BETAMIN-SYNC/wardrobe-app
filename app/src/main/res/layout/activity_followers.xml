@@ -9,7 +9,19 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/toolbar"
-        android:background="?android:attr/windowBackground"/>
+        android:background="?android:attr/windowBackground">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="start"
+            android:fontFamily="@font/montserrat_bold"
+            android:textColor="@color/button_color"
+            android:textSize="18sp"
+            android:textStyle="italic"
+            android:text="Followers"/>
+
+    </androidx.appcompat.widget.Toolbar>
 
     <androidx.recyclerview.widget.RecyclerView
         android:layout_width="match_parent"

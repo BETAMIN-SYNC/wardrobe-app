@@ -35,9 +35,7 @@ public class CommentAdapter extends RecyclerView.Adapter<CommentAdapter.ViewHold
 
     private final Context mContext;
     private final List<Comment> mComment;
-
     private final String postid;
-
 
     private FirebaseUser firebaseUser;
 
