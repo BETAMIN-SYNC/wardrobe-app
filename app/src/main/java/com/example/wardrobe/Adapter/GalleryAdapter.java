@@ -35,8 +35,18 @@ public class GalleryAdapter extends RecyclerView.Adapter<GalleryAdapter.MyViewHo
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-            Glide.with(context).load(mList.get(position).getImageUrl()).into(holder.imageView);
+        FirebaseUser currentUser = FirebaseAuth.getInstance().getCurrentUser();
+        Gallery gallery = mList.get(position);
+
+        if (currentUser != null && gallery.getUserId() != null && gallery.getUserId().equals(currentUser.getUid())) {
+            Glide.with(context).load(gallery.getImageUrl()).into(holder.imageView);
+            holder.imageView.setVisibility(View.VISIBLE);
+        } else {
+            holder.imageView.setVisibility(View.GONE);
+        }
     }
+
+
 
     @Override
     public int getItemCount() {

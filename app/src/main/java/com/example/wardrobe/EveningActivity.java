@@ -1,22 +1,20 @@
 package com.example.wardrobe;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+
 import android.content.ContentResolver;
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.webkit.MimeTypeMap;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
-import androidx.annotation.Nullable;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.wardrobe.Adapter.GalleryAdapter;
 import com.example.wardrobe.Model.Gallery;
@@ -32,7 +30,7 @@ import com.google.firebase.storage.StorageReference;
 
 import java.util.ArrayList;
 
-public class FormalActivity extends AppCompatActivity {
+public class EveningActivity extends AppCompatActivity {
 
     private ImageView imageView;
     private ProgressBar progressBar;
@@ -46,9 +44,9 @@ public class FormalActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_formal);
+        setContentView(R.layout.activity_evening);
 
-        root = FirebaseDatabase.getInstance().getReference("Formal Wear");
+        root = FirebaseDatabase.getInstance().getReference("Evening Wear");
         reference = FirebaseStorage.getInstance().getReference();
 
         progressBar = findViewById(R.id.progressBar);
@@ -90,7 +88,7 @@ public class FormalActivity extends AppCompatActivity {
 
                 @Override
                 public void onCancelled(@NonNull DatabaseError error) {
-                    Toast.makeText(FormalActivity.this, "Failed to fetch images.", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EveningActivity.this, "Failed to fetch images.", Toast.LENGTH_SHORT).show();
                 }
             });
         }
@@ -107,7 +105,7 @@ public class FormalActivity extends AppCompatActivity {
             if (imageUri != null) {
                 uploadToFirebase(imageUri);
             } else {
-                Toast.makeText(FormalActivity.this, "Please Select an Image", Toast.LENGTH_SHORT).show();
+                Toast.makeText(EveningActivity.this, "Please Select an Image", Toast.LENGTH_SHORT).show();
             }
         }
     }
@@ -125,12 +123,12 @@ public class FormalActivity extends AppCompatActivity {
                                 root.child(modelId).setValue(gallery)
                                         .addOnSuccessListener(aVoid -> {
                                             progressBar.setVisibility(View.INVISIBLE);
-                                            Toast.makeText(FormalActivity.this, "Uploaded Successfully", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(EveningActivity.this, "Uploaded Successfully", Toast.LENGTH_SHORT).show();
                                             imageView.setImageResource(R.drawable.add);
                                         })
                                         .addOnFailureListener(e -> {
                                             progressBar.setVisibility(View.INVISIBLE);
-                                            Toast.makeText(FormalActivity.this, "Uploading Failed!", Toast.LENGTH_SHORT).show();
+                                            Toast.makeText(EveningActivity.this, "Uploading Failed!", Toast.LENGTH_SHORT).show();
                                         });
                             }
                         }
@@ -139,7 +137,7 @@ public class FormalActivity extends AppCompatActivity {
                 .addOnProgressListener(snapshot -> progressBar.setVisibility(View.VISIBLE))
                 .addOnFailureListener(e -> {
                     progressBar.setVisibility(View.INVISIBLE);
-                    Toast.makeText(FormalActivity.this, "Uploading Failed!", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(EveningActivity.this, "Uploading Failed!", Toast.LENGTH_SHORT).show();
                 });
     }
 

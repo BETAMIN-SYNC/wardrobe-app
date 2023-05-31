@@ -42,7 +42,37 @@
             android:id="@+id/formalBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Formal" />
+            android:text="Formal Wear" />
+
+        <Button
+            android:id="@+id/casualBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Casual Wear" />
+
+        <Button
+            android:id="@+id/activeBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Active Wear" />
+
+        <Button
+            android:id="@+id/businessBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Business Attire" />
+
+        <Button
+            android:id="@+id/eveningBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Evening Wear" />
+
+        <Button
+            android:id="@+id/othersBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Others" />
     </LinearLayout>
 
 </RelativeLayout>
