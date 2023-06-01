@@ -214,9 +214,9 @@ public class ProfileFragment extends Fragment {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 if (snapshot.child(profileid).exists()) {
-                    edit_profile.setText("following");
+                    edit_profile.setText("Following");
                 } else {
-                    edit_profile.setText("follow");
+                    edit_profile.setText("Follow");
                 }
             }
 
